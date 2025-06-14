@@ -1,10 +1,22 @@
 # Spectrum Installation Playbook
-Ansible playbook to install CA/Broadcom DX Netops Spectrum.
-The playbook help you set up any size of spectrum environments.
-It uses the Spectrum distributed installation procedure and all the Spectrum servers will be installed in parallel.
+
+Ansible playbook to install Broadcom DX Netops Spectrum on Rocky Linux and possibly other Red Hat Linux derived distributions.
+
+The following DX netops Spectrum components are supported:
+* SpectroServer
+* Oneclick
+* Spectrum Report Manager
+I may add support for other components later but at this stage this is all I need.
+
+The playbook uses the Spectrum distributed installation procedure.
+
 The minor version will be installed and also the latest update if defined.
 You only need one configuration file (inventory) to define your environment!
-Ansible is only needed on the host from where Spectrum distributed install will run. 
+
+## Inventory
+
+Ansible is only needed on the host from where Spectrum distributed install will run. You must make sure that the
+user running Ansible can log into the others server.
 
 You can define server with these functions:
 * SpectroSERVER primary and secondary
@@ -19,8 +31,8 @@ To give you an idea of the installation time I measured in the lab:
 
 **Requirements:**
 * fresh Linux server/VMs for Spectrum with a user with sudo rights
-* a host from which to install Spectrum with the help of ansible
-* ansible is available for any linux derivate, but for the Spectrum installation binaries it is necessary that you use a Spectrum compatible linux for ansible
+* a host from which to install Spectrum with the help of Ansible
+* Ansible is available for any linux derivate, but for the Spectrum installation binaries it is necessary that you use a Spectrum compatible linux for ansible
 * tested with ansible 2.9 but versions => 2.5 should work
 * clone of this repository
 * properly configured name resolution. Ansible host must be able to resolve the Spectrum servers by name.
@@ -56,9 +68,9 @@ To give you an idea of the installation time I measured in the lab:
 
 |Ansible/Installation Host|Server OS|Base Version|Update Version|
 |----------|----------|----------|----------|
-|CentOS 7.9|CentOS 8.1|10.4.3.0.21|10.4.3.1.17|
-|CentOS 7.9|Centos 8 Stream|10.4.3.0.21|10.4.3.1.17|
-|CentOS 7.9|Centos 8.1|running 10.4.3.1.17|21.2.1.0.46|
+|Rocky Linux 9.3|Rocky Linux 9.3|10.4.3.0.21|10.4.3.1.17|
+|Rocky Linux 9.3|Rocky Linux 9.3|10.4.3.0.21|10.4.3.1.17|
+|Rocky Linux 9.3|Rocky Linux 9.3|running 10.4.3.1.17|21.2.1.0.46|
 
 #### Next todo's
 - [x] add precedence 20 to secondarys
